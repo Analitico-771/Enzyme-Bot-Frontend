@@ -2,7 +2,10 @@
     https://github.com/avantgardefinance/enzyme-bot/
     https://github.com/enzymefinance/protocol
 
-    To make the app work for you you will need to create an env.ts file in the react-app src folder.  This is where the environmental variables are being held.  The Env Var Form is also working but I prefer to use the env.ts file.  For now, a manual switch from from to env.ts file is required
+    To make the app work for you you will need to create an env.ts file in the react-app src folder.  This is where the environmental variables are being held.  The Env Var Form is also working but I prefer to use the env.ts file.  For now, a manual switch from from to env.ts file is required.
+
+    A link to the Demo of the app
+    - https://youtu.be/Hdj2ur4Mmjs
 
 2. M.V.P
     *Provide the following:

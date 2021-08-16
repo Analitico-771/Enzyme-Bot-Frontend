@@ -206,4 +206,4 @@ function Trades () {
   ); 
 }
   
-  export default Trades;
+export default Trades;
