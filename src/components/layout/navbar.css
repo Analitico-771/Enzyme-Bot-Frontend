@@ -1,0 +1,12 @@
+
+.logo-img {
+    width: 60px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+
+  .navbar-custom {
+    align-items: center;
+    font-size: x-large;
+  }
