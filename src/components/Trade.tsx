@@ -168,7 +168,9 @@ function Trades () {
                 <div className="flex-fill p-2 blockchain-txns-header-hash">Price</div>
 
               </div>
+
                 <TradingAssets />
+                
             </div>
           </div>
         </div>

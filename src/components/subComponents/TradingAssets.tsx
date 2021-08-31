@@ -13,9 +13,8 @@ const TradingAssets = () => {
 
     useEffect(() => {
         getcurrentPrice();
-        getCurrentAssets();
         console.log('tradingAssets.tsx component did mount');
-    }, [currentPrice ]);
+    }, [currentPrice]);
     
     const getCurrentAssets = async () => {
         try{
@@ -31,6 +30,7 @@ const TradingAssets = () => {
         //api call for price information
         const url = `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${env.apiKey}`;
         try{
+            await getCurrentAssets();
             const response: any = await fetch(url);//api call for price information
             const symbolData: any = await response.json();
             const price = symbolData.result.ethusd;
