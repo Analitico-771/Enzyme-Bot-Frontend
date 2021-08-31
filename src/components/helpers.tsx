@@ -18,14 +18,3 @@ export const convertedValue = (value: any) => {
     }
     return convertedValue;
 }
-
-// export const getcurrentPrice = async () => {
-//     let response: any = await fetch('https://coinograph.io/ticker/?symbol=gdax:ethusd'); //api call for symbol information
-//     let symbolData: any = await response.json();
-//     console.log("symbolData", symbolData.price);
-//     return symbolData.price;
-// }
-
-// export const setTimeout(() => {
-//     run(bot);
-//     }, 1000 * 60);

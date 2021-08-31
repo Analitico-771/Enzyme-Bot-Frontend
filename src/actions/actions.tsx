@@ -24,7 +24,7 @@ export const swapTrade = (d: any) => {
 };
 
 export const addAssets = (d: any) => {
- 
+  // console.log("actions assets", d);
   return {
     type: ADDASSETS,
     data: d
@@ -32,7 +32,7 @@ export const addAssets = (d: any) => {
 };
 
 export const addHoldings = (d: any) => {
- 
+  // console.log("actions holdings", d);
   return {
     type: ADDHOLDINGS,
     data: d

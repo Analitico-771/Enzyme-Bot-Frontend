@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from "react";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { submit } from '../../actions/actions';
 
 const EnvVariablesForm = () => {
@@ -11,15 +11,11 @@ const EnvVariablesForm = () => {
   const [MainNetPriKeyValue, setMainNetPriKeyValue] = useState('');
   const [KovanNetPriKeyValue, setKovanNetPriKeyValue] = useState('');
   const [EnzymeVaultValue, setEnzymeVaultValue] = useState('');
-  // const [isValid, setIsValid] = useState(false);
-  // const [selectValue, setSelectValue] = useState('Select Token')
-  const botVariables = useSelector((state: any) => state.combReducers.envVariables);
   const dispatch = useDispatch();
 
   useEffect(  () => {
     console.log('EnvVariablesForm component did mount');
     }, [])
-  // console.log("botVariables", botVariables);
 
   const handleForm = (e: any) => {
     e.preventDefault();
@@ -33,8 +29,7 @@ const EnvVariablesForm = () => {
       KovanNetPriKeyValue: KovanNetPriKeyValue,
       EnzymeVaultValue: EnzymeVaultValue
     };
-    // console.log(EnvVariables);
-    // console.log(botVariables);
+    
     dispatch(submit(EnvVariables));
     setKovanNodeValue("");
     setMainNetValue("");

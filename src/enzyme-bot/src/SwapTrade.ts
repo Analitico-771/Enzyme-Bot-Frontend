@@ -5,7 +5,7 @@ import {
   IntegrationManagerActionId,
   takeOrderSelector,
   uniswapV2TakeOrderArgs,
-  ValueInterpreter,
+  // ValueInterpreter,
   VaultLib,
 } from '@enzymefinance/protocol';
 import { BigNumber, providers, utils, Wallet } from 'ethers';

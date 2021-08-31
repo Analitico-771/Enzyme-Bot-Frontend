@@ -1,5 +1,5 @@
 import { providers } from 'ethers';
-import { loadEnv } from './loadEnv';
+// import { loadEnv } from './loadEnv';
 
 export function getProvider(network: 'MAINNET' | 'KOVAN') {
   // console.log('network = ', network);

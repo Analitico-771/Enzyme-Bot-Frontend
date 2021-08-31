@@ -41,7 +41,7 @@ const allreducers = (state: any, action: any) => {
         
         case ADDASSETS:
             // [].includes(searchCriteria)
-            // console.log("action.data ", action.data);
+            // console.log("assets action.data ", action.data);
             return {
                 ...state, 
                 reduxAssets: action.data
@@ -51,7 +51,7 @@ const allreducers = (state: any, action: any) => {
         
         case ADDHOLDINGS:
             // [].includes(searchCriteria)
-            // console.log("action.data ", action.data);
+            // console.log("holdings action.data ", action.data);
             return {
                 ...state, 
                 reduxHoldings: action.data

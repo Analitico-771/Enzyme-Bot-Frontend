@@ -1,7 +1,7 @@
 import env from '../../../env';
 import { EnzymeBot } from '../EnzymeBot';
 import { SwapTrade } from '../SwapTrade';
-import { loadEnv } from '../utils/loadEnv';
+// import { loadEnv } from '../utils/loadEnv';
 import { getGasPrice } from '../utils/getGasPrice';
 import { getRevertError } from '../utils/getRevertError';
 

@@ -6,17 +6,17 @@ import {
   IntegrationManagerActionId,
   takeOrderSelector,
   uniswapV2TakeOrderArgs,
-  ValueInterpreter,
+  // ValueInterpreter,
   VaultLib,
 } from '@enzymefinance/protocol';
-import { BigNumber, providers, utils, Wallet } from 'ethers';
-import { getDeployment } from '../utils/getDeployment';
-import { getProvider } from '../utils/getProvider';
-import { getToken, getTokens } from '../utils/getToken';
+import { BigNumber } from 'ethers';
+// import { getDeployment } from '../utils/getDeployment';
+// import { getProvider } from '../utils/getProvider';
+import { getToken } from '../utils/getToken';
 import { getTokenBalance } from '../utils/getTokenBalance';
-import { getVaultInfo } from '../utils/getVault';
-import { getWallet } from '../utils/getWallet';
-import { AssetsQuery, CurrentReleaseContractsQuery, VaultQuery } from '../utils/subgraph/subgraph';
+// import { getVaultInfo } from '../utils/getVault';
+// import { getWallet } from '../utils/getWallet';
+// import { AssetsQuery, CurrentReleaseContractsQuery, VaultQuery } from '../utils/subgraph/subgraph';
 import { getTradeDetails, TokenBasics } from '../utils/uniswap/getTradeDetails';
 import { EnzymeBot } from '../EnzymeBot';
 

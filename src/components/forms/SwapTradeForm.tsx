@@ -1,15 +1,15 @@
 
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { submit, swapTrade } from '../../actions/actions';
+import { swapTrade } from '../../actions/actions';
 // import { SwapTrades } from "../Trade";
-import env from '../../env';
+//import env from '../../env';
 
 const SwapTradeForm = () => {
   const [sellAsset, setsellAssetValue] = useState('');
-  const [sellAssetAmount, setsellAssetAmountValue] = useState('');
+  //const [sellAssetAmount, setsellAssetAmountValue] = useState('');
   const [buyAsset, setbuyAssetValue] = useState('');
-  const [buyAssetAmount, setbuyAssetAmountValue] = useState('');
+  //const [buyAssetAmount, setbuyAssetAmountValue] = useState('');
 
   const tradeVariables = useSelector((state: any) => state.combReducers.swapTrade);
   const dispatch = useDispatch();

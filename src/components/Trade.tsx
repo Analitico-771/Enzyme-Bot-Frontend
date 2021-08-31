@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import '../App.css';
-import { EnzymeBot } from "../enzyme-bot/src/EnzymeBot";
 import env from '../env';
 import { config } from 'dotenv';
 import { SwapTrade } from '../enzyme-bot/src/SwapTrade';
@@ -14,79 +12,55 @@ import EnvVariablesForm from './forms/EnvVariablesForm';
 import SwapTradeForm from './forms/SwapTradeForm';
 import CurrentHoldings from '../components/subComponents/CurrentHoldings'
 import TradingAssets from '../components/subComponents/TradingAssets';
-import { getAssetList } from '../enzyme-bot/src/utils/Helpers';
-// import { swapTrade, addAssets, addHoldings } from '../actions/actions';
-// import {convertedValue} from './helpers';
-// import CurrentHoldings from "./CurrentHoldings";
-// import { getPrice } from '../enzyme-bot/src/utils/Helpers';
-// import { EnzymeBot } from '../enzyme-bot/src/EnzymeBot';
-// import React, {useState, useEffect} from "react";
+import { addHoldings } from "../actions/actions";
+import '../App.css';
+// import { EnzymeBot } from "../enzyme-bot/src/EnzymeBot";
 // import { run } from '../enzyme-bot/src/components/index';
-// import { getHoldings } from '../enzyme-bot/src/EnzymeBot';
-// import { getcurrentPrice } from './helpers';
-// import { loadEnv } from '../enzyme-bot/src/utils/loadEnv';
 
 config();
 const user = `Anonymous`;
 
 function Trades () {
-  const [currentHoldings, setcurrentHoldings] = useState([]);
-  const [currentAssets, setcurrentAssets] = useState([]);
+
   const [currentPrice, setcurrentPrice] = useState([]);
   const botVariables = useSelector((state: any) => state.combReducers.envVariables);
   const tradeVariables = useSelector((state: any) => state.combReducers.swapTrade);
   const assetsList = useSelector((state: any) => state.combReducers.reduxAssets);
   const holdingsList = useSelector((state: any) => state.combReducers.reduxHoldings);
   const dispatch = useDispatch();
-  // var assets: any;
 
   useEffect( () => {
-    
-    getMyHoldings();
-    // getCurrentAssets();
-    // getcurrentPrice();
-    console.log('Trade.tsx component did mount');
-  //   console.log(currentPrice);
-  //   console.log("Trade.tsx tradeVariables", tradeVariables);
-  }, [currentPrice, tradeVariables])
-  // })//, [currentPrice])
-
-  // console.log('assetsList', assetsList);
-
-  const getMyHoldings = () => {
-    let currentHoldingsCopy: any = getCurrentHoldings()
-    .then( data => {
-      currentHoldingsCopy = data;
-      setcurrentHoldings(currentHoldingsCopy);
-      // dispatch(addHoldings(currentHoldingsCopy));//giving me issues with addAssets
-      // console.log('current holdings', currentHoldingsCopy);
-    });
-  }
+    //*componentDidUnmount - clean up function
+    //   return () => {
+    //     effect
+    //   };
+  }, [currentPrice, tradeVariables, botVariables])
   
   const getcurrentPrice = async () => {
     //api call for price information
     const url = `https://api.etherscan.io/api?module=stats&action=ethprice&apikey=${env.apiKey}`;
     try{
-      let response: any = await fetch(url);//api call for price information
-      let symbolData: any = await response.json();
-      // console.log("symbolData", symbolData.result.ethusd);
-      setcurrentPrice(symbolData.result.ethusd);
+      const response: any = await fetch(url);//api call for price information
+      const symbolData: any = await response.json();
+      const price = symbolData.result.ethusd;
+      // console.log("symbolData", price);
+      setcurrentPrice(price);
     }catch(err){
       console.log("error with price api", err);
     }
   }
-
-  // const getCurrentAssets = async () => {
-  //   const assets: any = await getAssetList();
-  //   console.log("assets", assets);
-  //   // console.log("assets", assets[0]);
-  //   setcurrentAssets(assets);
-  //   dispatch(addAssets(assets));
-  // }
+  
+  const getMyHoldings = async () => {
+    try{
+      const data: any = await getCurrentHoldings();
+      // console.log("Trade.tsx holdings ", holdingsList)
+      await dispatch(addHoldings(data));
+    }catch(err){
+      alert(`Error fetching assets ${err}`);
+    };
+  }
 
   const handleClick = async (input: any) => {
-
-    // console.log(`Hello World! I'm the Enzyme Crypto-Bot`);
 
     switch(input){
       case "trade":
@@ -97,7 +71,6 @@ function Trades () {
           getMyHoldings();
           getcurrentPrice();
           // console.log('trade function');
-          // console.log("setTimeout", currentPrice);
         }, 300 * 60);
       break;
 
@@ -159,7 +132,6 @@ function Trades () {
               <div className="card-body">
                 <div className="address-list">
                     <div className="card-body address-list">
-                      {/* <h3 className="text-danger">Hello World! I'm the Enzyme Crypto-Bot</h3> */}
                       <br />
                       <button className="trade-button" onClick={()=>handleClick("trade") }>
                         Algo Trade
@@ -178,7 +150,6 @@ function Trades () {
         <div className="vertical">
           <div className="card bg-dark text-white">
             <div className="card-header">Asset Holdings for Enzyme Vault :<span>{<span> {'\u00A0'} </span> }</span> {env.enzymeVaultAddress}
-              {/* {showERC20 ? <HeaderERC20 /> : <Header />} */}
               <div className="d-flex flex-row blockchain-txns-header">
                 <div className="flex-fill p-2 blockchain-txns-header-hash">Name</div>
                 <div className="flex-fill p-2 blockchain-txns-header-hash">Symbol</div>
